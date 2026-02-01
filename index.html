@@ -3,6 +3,7 @@
 <head>
   <meta name="robots" content="noindex">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Skyデイリーチェック</title>
 
 <link rel="icon" type="image/svg+xml"
@@ -206,6 +207,39 @@
     margin:0px;
 }
 
+    /* ===== スマホ専用 ===== */
+@media (max-width: 768px) {
+
+  /* 全体幅をスマホ基準に */
+  .container {
+    width: 100%;
+  }
+
+  /* iframe切り抜き枠も画面幅に合わせる */
+  .iframe-crop {
+    width: 100%;
+  }
+
+  /* 見出し少し小さく */
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  /* アンカーは折り返し前提 */
+  .anchor {
+    width: 100%;
+  }
+
+  .anchor a {
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 6px 4px 0;
+  }
+}
 
   </style>
 </head>
@@ -317,6 +351,7 @@
 
 </body>
 </html>
+
 
 
 
