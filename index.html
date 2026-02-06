@@ -347,7 +347,6 @@
 
 <body>
 <div class="container">
-<button id="reloadBtn">🔄 リロード</button>
 <p style="font-size:12px;color:#888;">This page is for personal use.</p>
 
   <h1>Skyデイリーチェック</h1>
@@ -452,14 +451,40 @@
 </div>
 
 <script>
-  document.getElementById("reloadBtn").addEventListener("click", () => {
-    location.reload();
-  });
+(function () {
+  const TARGET_HOUR = 17;
+  const TARGET_MIN = 0;
+
+  let reloadedToday = false;
+
+  function checkTime() {
+    const now = new Date();
+
+    // 日付が変わったらフラグリセット
+    if (now.getHours() === 0 && now.getMinutes() === 0) {
+      reloadedToday = false;
+    }
+
+    // 17:00 ちょうどに1回だけリロード
+    if (
+      now.getHours() === TARGET_HOUR &&
+      now.getMinutes() === TARGET_MIN &&
+      !reloadedToday
+    ) {
+      reloadedToday = true;
+      location.reload();
+    }
+  }
+
+  // 30秒ごとにチェック（十分軽い）
+  setInterval(checkTime, 30000);
+})();
 </script>
 
    
 </body>
 </html>
+
 
 
 
